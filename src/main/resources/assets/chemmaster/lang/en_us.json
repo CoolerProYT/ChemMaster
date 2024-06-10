@@ -1,0 +1,19 @@
+{
+  "item.chemmaster.test_tube": "Test Tube",
+
+  "item.chemmaster.iron_dust": "Iron Dust",
+  "item.chemmaster.liquid_iron": "Liquid Iron",
+
+  "block.chemmaster.aluminum_ore": "Aluminum Ore",
+  "item.chemmaster.aluminum_ingot": "Aluminum Ingot",
+  "item.chemmaster.aluminum_dust": "Aluminum Dust",
+  "item.chemmaster.raw_aluminum": "Raw Aluminum",
+  "item.chemmaster.liquid_aluminum": "Liquid Aluminum",
+  "block.chemmaster.aluminum_block": "Block of Aluminum",
+  "block.chemmaster.raw_aluminum_block": "Block of Raw Aluminum",
+
+  "item.chemmaster.copper_dust": "Copper Dust",
+  "item.chemmaster.liquid_copper": "Liquid Copper",
+
+  "creativetab.chemmaster": "Chem Master"
+}
