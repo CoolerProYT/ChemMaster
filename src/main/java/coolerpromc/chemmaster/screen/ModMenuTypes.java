@@ -15,7 +15,7 @@ public class ModMenuTypes {
             DeferredRegister.create(ForgeRegistries.MENU_TYPES, ChemMaster.MODID);
 
     public static final RegistryObject<MenuType<FluidSeparatorMenu>> FLUID_SEPARATOR_MENU =
-            registerMenuType("gem_polishing_menu", FluidSeparatorMenu::new);
+            registerMenuType("fluid_separating_menu", FluidSeparatorMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
