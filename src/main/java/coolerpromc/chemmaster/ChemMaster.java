@@ -2,9 +2,13 @@ package coolerpromc.chemmaster;
 
 import com.mojang.logging.LogUtils;
 import coolerpromc.chemmaster.block.ModBlocks;
+import coolerpromc.chemmaster.block.entity.ModBlockEntities;
 import coolerpromc.chemmaster.item.ModCreativeModTabs;
 import coolerpromc.chemmaster.item.ModItems;
+import coolerpromc.chemmaster.screen.FluidSeparatorScreen;
+import coolerpromc.chemmaster.screen.ModMenuTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
@@ -49,6 +53,9 @@ public class ChemMaster {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -80,9 +87,7 @@ public class ChemMaster {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            MenuScreens.register(ModMenuTypes.FLUID_SEPARATOR_MENU.get(), FluidSeparatorScreen::new);
         }
     }
 }

@@ -33,6 +33,15 @@ public class ModItems {
     public static final RegistryObject<Item> COPPER_DUST = ITEMS.register("copper_dust",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_LEAD = ITEMS.register("raw_lead",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LEAD_DUST = ITEMS.register("lead_dust",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIQUID_LEAD = ITEMS.register("liquid_lead",
+            () -> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

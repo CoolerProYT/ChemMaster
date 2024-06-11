@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "chemmaster:aluminum_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "chemmaster:aluminum_ingot"
+  }
+}

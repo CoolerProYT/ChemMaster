@@ -17,31 +17,39 @@ public class ModCreativeModTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.TEST_TUBE.get()))
                     .title(Component.translatable("creativetab.chemmaster"))
                     .displayItems((pParameters,pOutput) -> {
+                        pOutput.accept(ModBlocks.FLUID_SEPARATOR.get());
                         //Ore
                         pOutput.accept(ModBlocks.ALUMINUM_ORE.get());
+                        pOutput.accept(ModBlocks.LEAD_ORE.get());
 
                         //Raw
                         pOutput.accept(ModItems.RAW_ALUMINUM.get());
+                        pOutput.accept(ModItems.RAW_LEAD.get());
 
                         //Dust
                         pOutput.accept(ModItems.ALUMINUM_DUST.get());
                         pOutput.accept(ModItems.IRON_DUST.get());
                         pOutput.accept(ModItems.COPPER_DUST.get());
+                        pOutput.accept(ModItems.LEAD_DUST.get());
 
                         //Ingot
                         pOutput.accept(ModItems.ALUMINUM_INGOT.get());
+                        pOutput.accept(ModItems.LEAD_INGOT.get());
 
                         //Raw Block
                         pOutput.accept(ModBlocks.RAW_ALUMINUM_BLOCK.get());
+                        pOutput.accept(ModBlocks.RAW_LEAD_BLOCK.get());
 
                         //Block
                         pOutput.accept(ModBlocks.ALUMINUM_BLOCK.get());
+                        pOutput.accept(ModBlocks.LEAD_BLOCK.get());
 
                         //Tube
                         pOutput.accept(ModItems.TEST_TUBE.get());
                         pOutput.accept(ModItems.LIQUID_ALUMINUM.get());
                         pOutput.accept(ModItems.LIQUID_IRON.get());
                         pOutput.accept(ModItems.LIQUID_COPPER.get());
+                        pOutput.accept(ModItems.LIQUID_LEAD.get());
                     })
                     .build());
 

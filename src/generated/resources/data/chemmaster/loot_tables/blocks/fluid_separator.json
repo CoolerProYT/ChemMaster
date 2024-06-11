@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "chemmaster:fluid_separator"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "chemmaster:blocks/fluid_separator"
+}
