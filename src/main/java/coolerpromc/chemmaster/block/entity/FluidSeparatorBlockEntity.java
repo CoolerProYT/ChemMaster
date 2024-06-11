@@ -36,7 +36,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2){
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3){
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -66,7 +66,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
             public int get(int pIndex) {
                 return switch (pIndex) {
                     case 0 -> FluidSeparatorBlockEntity.this.progress;
-                    case 1 -> FluidSeparatorBlockEntity.this.maxProgress;
+                    case 1, 2 -> FluidSeparatorBlockEntity.this.maxProgress;
                     default -> 0;
                 };
             }
@@ -75,13 +75,13 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
             public void set(int pIndex, int pValue) {
                 switch (pIndex) {
                     case 0 -> FluidSeparatorBlockEntity.this.progress = pValue;
-                    case 1 -> FluidSeparatorBlockEntity.this.maxProgress = pValue;
+                    case 1, 2 -> FluidSeparatorBlockEntity.this.maxProgress = pValue;
                 }
             }
 
             @Override
             public int getCount() {
-                return 2;
+                return 3;
             }
         };
     }
@@ -161,26 +161,36 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
 
     private void craftItem() {
         ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get(), 1);
+        ItemStack result2 = new ItemStack(ModItems.LEAD_INGOT.get(), 1);
         this.itemHandler.extractItem(INPUT_SLOT, 1, false);
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        this.itemHandler.setStackInSlot(2, new ItemStack(result2.getItem(),
+                this.itemHandler.getStackInSlot(2).getCount() + result2.getCount()));
     }
 
     private boolean hasRecipe() {
         boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.RAW_ALUMINUM.get();
         ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get());
+        ItemStack result2 = new ItemStack(ModItems.LEAD_INGOT.get());
 
-        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount()) && canInsertItemIntoOutputSlot(result.getItem());
+        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount())
+                && canInsertItemIntoOutputSlot(result.getItem())
+                && canInsertAmountIntoOutputSlot(result2.getCount())
+                && canInsertItemIntoOutputSlot(result2.getItem());
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item);
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item)
+                || this.itemHandler.getStackInSlot(2).isEmpty() || this.itemHandler.getStackInSlot(2).is(item);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize()
+                || this.itemHandler.getStackInSlot(2).getCount() + count <= this.itemHandler.getStackInSlot(2).getMaxStackSize();
     }
+
 
     private boolean hasProgressFinished() {
         return progress >= maxProgress;
