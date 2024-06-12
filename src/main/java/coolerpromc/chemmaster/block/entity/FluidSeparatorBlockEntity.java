@@ -1,7 +1,9 @@
 package coolerpromc.chemmaster.block.entity;
 
 import coolerpromc.chemmaster.item.ModItems;
+import coolerpromc.chemmaster.recipe.FluidSeparatingRecipe;
 import coolerpromc.chemmaster.screen.FluidSeparatorMenu;
+import coolerpromc.chemmaster.util.ModTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -26,13 +28,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvider{
-    private static final Set<Item> ALLOWED_ITEMS = Set.of(
-            ModItems.RAW_ALUMINUM.get()
-    );
-
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
 
@@ -44,11 +44,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            if(slot == INPUT_SLOT){
-                return ALLOWED_ITEMS.contains(stack.getItem());
-            }
-
-            return false;
+            return slot == INPUT_SLOT;
         }
     };
 
@@ -142,6 +138,11 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
+        ItemStack inputStack = this.itemHandler.getStackInSlot(INPUT_SLOT);
+        if (inputStack.getCount() < 2) {
+            resetProgress();
+            return;
+        }
         if(hasRecipe()) {
             increaseCraftingProgress();
             setChanged(pLevel, pPos, pState);
@@ -160,35 +161,112 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private void craftItem() {
-        ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get(), 1);
-        ItemStack result2 = new ItemStack(ModItems.LEAD_INGOT.get(), 1);
-        this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+        Optional<FluidSeparatingRecipe> recipe = getCurrentRecipe();
+        if (recipe.isPresent()) {
+            List<ItemStack> results = recipe.get().getOutputs();
+            ItemStack inputStack = this.itemHandler.getStackInSlot(INPUT_SLOT);
+            if (inputStack.getCount() < 2) {
+                // If there are not enough items, do not proceed with crafting
+                return;
+            }
 
-        this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
-        this.itemHandler.setStackInSlot(2, new ItemStack(result2.getItem(),
-                this.itemHandler.getStackInSlot(2).getCount() + result2.getCount()));
+            // Extract the input item from the input slot
+            this.itemHandler.extractItem(INPUT_SLOT, 2, false);
+
+            // Loop through each result item and find suitable output slots
+            for (ItemStack result : results) {
+                int outputSlot = findSuitableOutputSlot(result);
+                if (outputSlot != -1) {
+                    this.itemHandler.setStackInSlot(outputSlot, new ItemStack(result.getItem(),
+                            this.itemHandler.getStackInSlot(outputSlot).getCount() + result.getCount()));
+                } else {
+                    // Handle the case where no suitable output slot is found
+                    // This can be logging an error, throwing an exception, or any other handling logic
+                    System.err.println("No suitable output slot found for item: " + result);
+                }
+            }
+        }
     }
+
+    private int findSuitableOutputSlot(ItemStack result) {
+        // Implement logic to find a suitable output slot for the given result
+        // Return the slot index or -1 if no suitable slot is found
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
+            // Ensure we do not place the output item in the input slot
+            if (i == INPUT_SLOT) {
+                continue;
+            }
+
+            ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
+            if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxStackSize())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 
     private boolean hasRecipe() {
-        boolean hasCraftingItem = this.itemHandler.getStackInSlot(INPUT_SLOT).getItem() == ModItems.RAW_ALUMINUM.get();
-        ItemStack result = new ItemStack(ModItems.ALUMINUM_INGOT.get());
-        ItemStack result2 = new ItemStack(ModItems.LEAD_INGOT.get());
+        Optional<FluidSeparatingRecipe> recipe = getCurrentRecipe();
 
-        return hasCraftingItem && canInsertAmountIntoOutputSlot(result.getCount())
-                && canInsertItemIntoOutputSlot(result.getItem())
-                && canInsertAmountIntoOutputSlot(result2.getCount())
-                && canInsertItemIntoOutputSlot(result2.getItem());
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        List<ItemStack> results = recipe.get().getOutputs();
+
+        for (ItemStack result : results) {
+            if (!canInsertAmountIntoOutputSlot(result.getCount()) || !canInsertItemIntoOutputSlot(result.getItem())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    private boolean canInsertItemIntoOutputSlot(Item item) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty() || this.itemHandler.getStackInSlot(OUTPUT_SLOT).is(item)
-                || this.itemHandler.getStackInSlot(2).isEmpty() || this.itemHandler.getStackInSlot(2).is(item);
+
+    private Optional<FluidSeparatingRecipe> getCurrentRecipe(){
+        SimpleContainer inventory = new SimpleContainer(this.itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, this.itemHandler.getStackInSlot(i));
+        }
+
+        return this.level.getRecipeManager().getRecipeFor(FluidSeparatingRecipe.Type.INSTANCE, inventory, level);
     }
 
     private boolean canInsertAmountIntoOutputSlot(int count) {
-        return this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + count <= this.itemHandler.getStackInSlot(OUTPUT_SLOT).getMaxStackSize()
-                || this.itemHandler.getStackInSlot(2).getCount() + count <= this.itemHandler.getStackInSlot(2).getMaxStackSize();
+        // Implement logic to check if the output slot can accept the given count of items
+        // This logic should iterate over all output slots and ensure there's enough space for all output items
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
+            // Ensure we do not place the output item in the input slot
+            if (i == INPUT_SLOT) {
+                continue;
+            }
+
+            ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
+            if (stackInSlot.isEmpty() || stackInSlot.getCount() + count <= stackInSlot.getMaxStackSize()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean canInsertItemIntoOutputSlot(Item item) {
+        // Implement logic to check if the output slot can accept the given item
+        // This logic should iterate over all output slots and ensure the item can be inserted
+        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
+            // Ensure we do not place the output item in the input slot
+            if (i == INPUT_SLOT) {
+                continue;
+            }
+
+            ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
+            if (stackInSlot.isEmpty() || stackInSlot.getItem() == item) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

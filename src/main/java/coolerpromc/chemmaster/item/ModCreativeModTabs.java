@@ -46,10 +46,13 @@ public class ModCreativeModTabs {
 
                         //Tube
                         pOutput.accept(ModItems.TEST_TUBE.get());
+                        pOutput.accept(ModItems.WATER_TUBE.get());
                         pOutput.accept(ModItems.LIQUID_ALUMINUM.get());
                         pOutput.accept(ModItems.LIQUID_IRON.get());
                         pOutput.accept(ModItems.LIQUID_COPPER.get());
                         pOutput.accept(ModItems.LIQUID_LEAD.get());
+                        pOutput.accept(ModItems.LIQUID_HYDROGEN.get());
+                        pOutput.accept(ModItems.LIQUID_OXYGEN.get());
                     })
                     .build());
 

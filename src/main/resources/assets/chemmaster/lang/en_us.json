@@ -25,5 +25,9 @@
 
   "block.chemmaster.fluid_separator": "Fluid Separator",
 
+  "item.chemmaster.liquid_hydrogen": "Liquid Hydrogen",
+  "item.chemmaster.liquid_oxygen": "Liquid Oxygen",
+  "item.chemmaster.water_tube": "Water Tube",
+
   "creativetab.chemmaster": "Chem Master"
 }

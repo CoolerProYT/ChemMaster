@@ -1,0 +1,18 @@
+{
+  "type": "chemmaster:fluid_separating",
+  "ingredients": [
+    {
+      "item": "chemmaster:water_tube"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:liquid_hydrogen",
+      "count": 1
+    },
+    {
+      "item": "chemmaster:liquid_oxygen",
+      "count": 1
+    }
+  ]
+}

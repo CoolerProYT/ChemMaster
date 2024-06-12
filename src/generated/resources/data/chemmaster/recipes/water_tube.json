@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:water_bucket"
+    },
+    {
+      "item": "chemmaster:test_tube"
+    },
+    {
+      "item": "chemmaster:test_tube"
+    },
+    {
+      "item": "chemmaster:test_tube"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "chemmaster:water_tube"
+  }
+}

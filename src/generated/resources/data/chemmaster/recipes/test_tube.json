@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:glass_pane"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "A A",
+    "AAA"
+  ],
+  "result": {
+    "count": 3,
+    "item": "chemmaster:test_tube"
+  },
+  "show_notification": true
+}

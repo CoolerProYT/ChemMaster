@@ -34,6 +34,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.LEAD_DUST);
         simpleItem(ModItems.LIQUID_LEAD);
         simpleItem(ModItems.RAW_LEAD);
+
+        simpleItem(ModItems.LIQUID_HYDROGEN);
+        simpleItem(ModItems.LIQUID_OXYGEN);
+        simpleItem(ModItems.WATER_TUBE);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

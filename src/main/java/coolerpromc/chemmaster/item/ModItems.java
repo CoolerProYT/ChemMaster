@@ -42,6 +42,13 @@ public class ModItems {
     public static final RegistryObject<Item> LIQUID_LEAD = ITEMS.register("liquid_lead",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> LIQUID_HYDROGEN = ITEMS.register("liquid_hydrogen",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIQUID_OXYGEN = ITEMS.register("liquid_oxygen",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> WATER_TUBE = ITEMS.register("water_tube",
+            () -> new Item(new Item.Properties()));
+
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
