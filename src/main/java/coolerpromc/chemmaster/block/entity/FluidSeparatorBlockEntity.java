@@ -30,9 +30,8 @@ import net.minecraft.world.level.Level;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
-public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvider{
+public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvider {
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
 
