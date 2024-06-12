@@ -38,7 +38,7 @@ public class FluidSeparatorScreen extends AbstractContainerScreen<FluidSeparator
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
         if(menu.isCrafting()) {
-            guiGraphics.blit(TEXTURE, x + 85, y + 30, 176, 0, 8, menu.getScaledProgress());
+            guiGraphics.blit(TEXTURE, x + 77, y + 38, 176, 0, menu.getScaledProgress(), 8);
         }
     }
 

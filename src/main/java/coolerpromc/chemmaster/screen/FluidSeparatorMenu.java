@@ -32,9 +32,9 @@ public class FluidSeparatorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
-            this.addSlot(new SlotItemHandler(iItemHandler, 0, 80, 11));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 80, 59));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 60, 59));
+            this.addSlot(new SlotItemHandler(iItemHandler, 0, 34, 34));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 125, 13));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 125, 57));
         });
 
         addDataSlots(data);
