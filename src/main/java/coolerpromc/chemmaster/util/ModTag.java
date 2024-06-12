@@ -10,8 +10,6 @@ import net.minecraft.world.level.block.Block;
 
 public class ModTag {
     public static class Blocks {
-        public static final TagKey<Block> NEEDS_NETHERITE_TOOL = tag("needs_netherite_tool");
-
         private static TagKey<Block> tag(String name){
             return BlockTags.create(new ResourceLocation(ChemMaster.MODID,name));
         }
