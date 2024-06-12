@@ -5,6 +5,7 @@ import coolerpromc.chemmaster.block.ModBlocks;
 import coolerpromc.chemmaster.block.entity.ModBlockEntities;
 import coolerpromc.chemmaster.item.ModCreativeModTabs;
 import coolerpromc.chemmaster.item.ModItems;
+import coolerpromc.chemmaster.recipe.ModRecipes;
 import coolerpromc.chemmaster.screen.FluidSeparatorScreen;
 import coolerpromc.chemmaster.screen.ModMenuTypes;
 import net.minecraft.client.Minecraft;
@@ -55,6 +56,8 @@ public class ChemMaster {
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
