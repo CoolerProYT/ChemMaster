@@ -19,13 +19,12 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         simpleItem(ModItems.TEST_TUBE);
 
-        simpleItem(ModItems.LIQUID_IRON);
+        /*simpleItem(ModItems.LIQUID_IRON);
         simpleItem(ModItems.IRON_DUST);
 
         simpleItem(ModItems.ALUMINUM_INGOT);
         simpleItem(ModItems.ALUMINUM_DUST);
         simpleItem(ModItems.LIQUID_ALUMINUM);
-        simpleItem(ModItems.RAW_ALUMINUM);
 
         simpleItem(ModItems.LIQUID_COPPER);
         simpleItem(ModItems.COPPER_DUST);
@@ -33,11 +32,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.LEAD_INGOT);
         simpleItem(ModItems.LEAD_DUST);
         simpleItem(ModItems.LIQUID_LEAD);
-        simpleItem(ModItems.RAW_LEAD);
+        simpleItem(ModItems.RAW_LEAD);*/
 
         simpleItem(ModItems.LIQUID_HYDROGEN);
         simpleItem(ModItems.LIQUID_OXYGEN);
         simpleItem(ModItems.WATER_TUBE);
+
+        simpleItem(ModItems.RAW_ALUMINUM);
+        simpleItem(ModItems.RAW_LITHIUM);
+        simpleItem(ModItems.RAW_SILICON);
+        simpleItem(ModItems.RAW_BERYLLIUM);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

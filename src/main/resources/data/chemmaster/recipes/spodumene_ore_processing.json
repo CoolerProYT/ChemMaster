@@ -1,0 +1,26 @@
+{
+  "type": "chemmaster:ore_processing",
+  "ingredients": [
+    {
+      "item": "chemmaster:spodumene_ore"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:raw_lithium",
+      "count": 1
+    },
+    {
+      "item": "chemmaster:raw_aluminum",
+      "count": 1
+    },
+    {
+      "item": "chemmaster:raw_silicon",
+      "count": 2
+    },
+    {
+      "item": "chemmaster:liquid_oxygen",
+      "count": 6
+    }
+  ]
+}

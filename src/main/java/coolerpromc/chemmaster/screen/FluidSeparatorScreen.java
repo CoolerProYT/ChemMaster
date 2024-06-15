@@ -19,8 +19,9 @@ public class FluidSeparatorScreen extends AbstractContainerScreen<FluidSeparator
     @Override
     protected void init() {
         super.init();
-        this.inventoryLabelY = 10000;
-        this.titleLabelY = 10000;
+        this.inventoryLabelY = 74;
+        this.titleLabelY = 5;
+        this.titleLabelX = 49;
     }
 
     @Override

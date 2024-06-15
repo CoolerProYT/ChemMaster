@@ -8,6 +8,8 @@ import coolerpromc.chemmaster.item.ModItems;
 import coolerpromc.chemmaster.recipe.ModRecipes;
 import coolerpromc.chemmaster.screen.FluidSeparatorScreen;
 import coolerpromc.chemmaster.screen.ModMenuTypes;
+import coolerpromc.chemmaster.screen.OreProcessingStationMenu;
+import coolerpromc.chemmaster.screen.OreProcessingStationScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.registries.Registries;
@@ -91,6 +93,7 @@ public class ChemMaster {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             MenuScreens.register(ModMenuTypes.FLUID_SEPARATOR_MENU.get(), FluidSeparatorScreen::new);
+            MenuScreens.register(ModMenuTypes.ORE_PROCESSING_STATION_MENU.get(), OreProcessingStationScreen::new);
         }
     }
 }

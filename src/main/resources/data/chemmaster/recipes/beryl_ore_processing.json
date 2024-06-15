@@ -1,0 +1,26 @@
+{
+  "type": "chemmaster:ore_processing",
+  "ingredients": [
+    {
+      "item": "chemmaster:beryl_ore"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:raw_beryllium",
+      "count": 3
+    },
+    {
+      "item": "chemmaster:raw_aluminum",
+      "count": 2
+    },
+    {
+      "item": "chemmaster:raw_silicon",
+      "count": 6
+    },
+    {
+      "item": "chemmaster:liquid_oxygen",
+      "count": 18
+    }
+  ]
+}

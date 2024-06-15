@@ -16,6 +16,8 @@ public class ModMenuTypes {
 
     public static final RegistryObject<MenuType<FluidSeparatorMenu>> FLUID_SEPARATOR_MENU =
             registerMenuType("fluid_separating_menu", FluidSeparatorMenu::new);
+    public static final RegistryObject<MenuType<OreProcessingStationMenu>> ORE_PROCESSING_STATION_MENU =
+            registerMenuType("ore_processing_station_menu", OreProcessingStationMenu::new);
 
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {

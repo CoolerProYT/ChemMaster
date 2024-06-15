@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "chemmaster:block/ore_processing_station" },
+    "facing=east": { "model": "chemmaster:block/ore_processing_station", "y": 270 },
+    "facing=west": { "model": "chemmaster:block/ore_processing_station", "y": 90 },
+    "facing=north": { "model": "chemmaster:block/ore_processing_station", "y": 180 }
+  }
+}

@@ -1,7 +1,8 @@
 {
   "variants": {
-    "": {
-      "model": "chemmaster:block/fluid_separator"
-    }
+    "facing=south": { "model": "chemmaster:block/fluid_separator" },
+    "facing=east": { "model": "chemmaster:block/fluid_separator", "y": 270 },
+    "facing=west": { "model": "chemmaster:block/fluid_separator", "y": 90 },
+    "facing=north": { "model": "chemmaster:block/fluid_separator", "y": 180 }
   }
 }

@@ -1,9 +1,7 @@
 package coolerpromc.chemmaster.block.entity;
 
-import coolerpromc.chemmaster.item.ModItems;
 import coolerpromc.chemmaster.recipe.FluidSeparatingRecipe;
 import coolerpromc.chemmaster.screen.FluidSeparatorMenu;
-import coolerpromc.chemmaster.util.ModTag;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -33,7 +31,6 @@ import java.util.Optional;
 
 public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvider {
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(3){
         @Override
@@ -216,7 +213,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
         List<ItemStack> results = recipe.get().getOutputs();
 
         for (ItemStack result : results) {
-            if (!canInsertAmountIntoOutputSlot(result.getCount()) || !canInsertItemIntoOutputSlot(result.getItem())) {
+            if (!canInsertAmountIntoOutputSlot(result) || !canInsertItemIntoOutputSlot(result.getItem())) {
                 return false;
             }
         }
@@ -234,17 +231,10 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
         return this.level.getRecipeManager().getRecipeFor(FluidSeparatingRecipe.Type.INSTANCE, inventory, level);
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        // Implement logic to check if the output slot can accept the given count of items
-        // This logic should iterate over all output slots and ensure there's enough space for all output items
-        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
-            // Ensure we do not place the output item in the input slot
-            if (i == INPUT_SLOT) {
-                continue;
-            }
-
+    private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
+        for (int i = 1; i < this.itemHandler.getSlots(); i++) {
             ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
-            if (stackInSlot.isEmpty() || stackInSlot.getCount() + count <= stackInSlot.getMaxStackSize()) {
+            if (stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() + result.getCount() <= stackInSlot.getMaxStackSize())) {
                 return true;
             }
         }
@@ -252,14 +242,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private boolean canInsertItemIntoOutputSlot(Item item) {
-        // Implement logic to check if the output slot can accept the given item
-        // This logic should iterate over all output slots and ensure the item can be inserted
-        for (int i = 0; i < this.itemHandler.getSlots(); i++) {
-            // Ensure we do not place the output item in the input slot
-            if (i == INPUT_SLOT) {
-                continue;
-            }
-
+        for (int i = 1; i < this.itemHandler.getSlots(); i++) {
             ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
             if (stackInSlot.isEmpty() || stackInSlot.getItem() == item) {
                 return true;

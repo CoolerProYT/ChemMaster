@@ -21,21 +21,21 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.ALUMINUM_BLOCK.get())
+                /*.add(ModBlocks.ALUMINUM_BLOCK.get())
                 .add(ModBlocks.RAW_ALUMINUM_BLOCK.get())
                 .add(ModBlocks.ALUMINUM_ORE.get())
                 .add(ModBlocks.LEAD_BLOCK.get())
                 .add(ModBlocks.RAW_LEAD_BLOCK.get())
-                .add(ModBlocks.LEAD_ORE.get())
+                .add(ModBlocks.LEAD_ORE.get())*/
                 .add(ModBlocks.FLUID_SEPARATOR.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.ALUMINUM_BLOCK.get())
+                /*.add(ModBlocks.ALUMINUM_BLOCK.get())
                 .add(ModBlocks.RAW_ALUMINUM_BLOCK.get())
                 .add(ModBlocks.ALUMINUM_ORE.get())
                 .add(ModBlocks.LEAD_BLOCK.get())
                 .add(ModBlocks.RAW_LEAD_BLOCK.get())
-                .add(ModBlocks.LEAD_ORE.get())
+                .add(ModBlocks.LEAD_ORE.get())*/
                 .add(ModBlocks.FLUID_SEPARATOR.get());
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL);

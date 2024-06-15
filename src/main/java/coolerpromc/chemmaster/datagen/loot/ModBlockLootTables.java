@@ -24,7 +24,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        this.dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
+        /*this.dropSelf(ModBlocks.ALUMINUM_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_ALUMINUM_BLOCK.get());
         this.add(ModBlocks.ALUMINUM_ORE.get(),
                 block -> createCopperLikeOreDrops(ModBlocks.ALUMINUM_ORE.get(), ModItems.RAW_ALUMINUM.get()));
@@ -32,9 +32,49 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.LEAD_BLOCK.get());
         this.dropSelf(ModBlocks.RAW_LEAD_BLOCK.get());
         this.add(ModBlocks.LEAD_ORE.get(),
-                block -> createCopperLikeOreDrops(ModBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get()));
+                block -> createCopperLikeOreDrops(ModBlocks.LEAD_ORE.get(), ModItems.RAW_LEAD.get()));*/
 
         this.dropSelf(ModBlocks.FLUID_SEPARATOR.get());
+        this.dropSelf(ModBlocks.ORE_PROCESSING_STATION.get());
+
+        //temp
+        this.dropSelf(ModBlocks.SPODUMENE_ORE.get());
+        this.dropSelf(ModBlocks.BERYL_ORE.get());
+        this.dropSelf(ModBlocks.BORAX_ORE.get());
+        this.dropSelf(ModBlocks.FLUORITE_ORE.get());
+        this.dropSelf(ModBlocks.HALITE_ORE.get());
+        this.dropSelf(ModBlocks.DOLOMITE_ORE.get());
+        this.dropSelf(ModBlocks.BAUXITE_ORE.get());
+        this.dropSelf(ModBlocks.SILICA_ORE.get());
+        this.dropSelf(ModBlocks.APATITE_ORE.get());
+        this.dropSelf(ModBlocks.SULFUR_ORE.get());
+        this.dropSelf(ModBlocks.POTASH_ORE.get());
+        this.dropSelf(ModBlocks.LIMESTONE_ORE.get());
+        this.dropSelf(ModBlocks.THORTVEITITE_ORE.get());
+        this.dropSelf(ModBlocks.RUTILE_ORE.get());
+        this.dropSelf(ModBlocks.VANADINITE_ORE.get());
+        this.dropSelf(ModBlocks.CHROMITE_ORE.get());
+        this.dropSelf(ModBlocks.PYROLUSITE_ORE.get());
+        this.dropSelf(ModBlocks.COBALTITE_ORE.get());
+        this.dropSelf(ModBlocks.PENTLANDITE_ORE.get());
+        this.dropSelf(ModBlocks.SPHALERITE_ORE.get());
+        this.dropSelf(ModBlocks.ARSENOPYRITE_ORE.get());
+        this.dropSelf(ModBlocks.LEPIDOLITE_ORE.get());
+        this.dropSelf(ModBlocks.CELESTINE_ORE.get());
+        this.dropSelf(ModBlocks.MONAZITE_ORE.get());
+        this.dropSelf(ModBlocks.ZIRCON_ORE.get());
+        this.dropSelf(ModBlocks.COLUMBITE_ORE.get());
+        this.dropSelf(ModBlocks.MOLYBDENITE_ORE.get());
+        this.dropSelf(ModBlocks.ARGENTITE_ORE.get());
+        this.dropSelf(ModBlocks.CASSITERITE_ORE.get());
+        this.dropSelf(ModBlocks.STIBNITE_ORE.get());
+        this.dropSelf(ModBlocks.POLLUCITE_ORE.get());
+        this.dropSelf(ModBlocks.BARITE_ORE.get());
+        this.dropSelf(ModBlocks.TANTALITE_ORE.get());
+        this.dropSelf(ModBlocks.SCHEELITE_ORE.get());
+        this.dropSelf(ModBlocks.CINNABAR_ORE.get());
+        this.dropSelf(ModBlocks.GALENA_ORE.get());
+        this.dropSelf(ModBlocks.URANINITE_ORE.get());
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item){

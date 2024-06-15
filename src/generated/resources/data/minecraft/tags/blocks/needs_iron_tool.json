@@ -1,11 +1,5 @@
 {
   "values": [
-    "chemmaster:aluminum_block",
-    "chemmaster:raw_aluminum_block",
-    "chemmaster:aluminum_ore",
-    "chemmaster:lead_block",
-    "chemmaster:raw_lead_block",
-    "chemmaster:lead_ore",
     "chemmaster:fluid_separator"
   ]
 }

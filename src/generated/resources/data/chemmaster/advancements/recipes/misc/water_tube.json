@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lead_block": {
+    "has_test_tube": {
       "conditions": {
         "items": [
           {
             "items": [
-              "chemmaster:lead_block"
+              "chemmaster:test_tube"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_lead_block",
+      "has_test_tube",
       "has_the_recipe"
     ]
   ],

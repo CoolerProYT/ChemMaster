@@ -13,6 +13,8 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<FluidSeparatorBlockEntity>> FLUID_SEPARATOR_BE = BLOCK_ENTITIES.register("fluid_separator_be",
             () -> BlockEntityType.Builder.of(FluidSeparatorBlockEntity::new, ModBlocks.FLUID_SEPARATOR.get()).build(null));
+    public static final RegistryObject<BlockEntityType<OreProcessingStationBlockEntity>> ORE_PROCESSING_STATION_BE = BLOCK_ENTITIES.register("ore_processing_station_be",
+            () -> BlockEntityType.Builder.of(OreProcessingStationBlockEntity::new, ModBlocks.ORE_PROCESSING_STATION.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

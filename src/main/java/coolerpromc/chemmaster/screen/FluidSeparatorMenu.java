@@ -33,8 +33,8 @@ public class FluidSeparatorMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 34, 34));
-            this.addSlot(new SlotItemHandler(iItemHandler, 1, 125, 13));
-            this.addSlot(new SlotItemHandler(iItemHandler, 2, 125, 57));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, 125, 16));
+            this.addSlot(new SlotItemHandler(iItemHandler, 2, 125, 54));
         });
 
         addDataSlots(data);
