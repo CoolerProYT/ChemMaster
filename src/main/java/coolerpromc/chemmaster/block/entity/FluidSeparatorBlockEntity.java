@@ -175,7 +175,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
             }
 
             // Extract the input item from the input slot
-            this.itemHandler.extractItem(INPUT_SLOT, 2, false);
+            this.itemHandler.internalExtractItem(INPUT_SLOT, 2, false);
 
             // Loop through each result item and find suitable output slots
             for (ItemStack result : results) {
@@ -208,8 +208,6 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
         }
         return -1;
     }
-
-
 
     private boolean hasRecipe() {
         Optional<FluidSeparatingRecipe> recipe = getCurrentRecipe();
