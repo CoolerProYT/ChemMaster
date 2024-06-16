@@ -1,5 +1,6 @@
 package coolerpromc.chemmaster.block.entity;
 
+import coolerpromc.chemmaster.handler.CustomItemHandler;
 import coolerpromc.chemmaster.recipe.FluidSeparatingRecipe;
 import coolerpromc.chemmaster.screen.FluidSeparatorMenu;
 import net.minecraft.core.BlockPos;
@@ -21,7 +22,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.level.Level;
@@ -32,7 +32,7 @@ import java.util.Optional;
 public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvider {
     private static final int INPUT_SLOT = 0;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3){
+    private final CustomItemHandler itemHandler = new CustomItemHandler(3){
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -41,6 +41,14 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return slot == INPUT_SLOT;
+        }
+
+        @Override
+        public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+            if (slot == INPUT_SLOT) {
+                return ItemStack.EMPTY;
+            }
+            return super.extractItem(slot, amount, simulate);
         }
     };
 
