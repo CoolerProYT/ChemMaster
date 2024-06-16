@@ -2,6 +2,7 @@ package coolerpromc.chemmaster.screen;
 
 import coolerpromc.chemmaster.block.ModBlocks;
 import coolerpromc.chemmaster.block.entity.OreProcessingStationBlockEntity;
+import coolerpromc.chemmaster.handler.CustomItemHandler;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -127,5 +128,25 @@ public class OreProcessingStationMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+    }
+
+    @Override
+    public void clicked(int pSlotId, int pButton, ClickType pClickType, Player pPlayer) {
+        if (pSlotId == 36) {
+            Slot sourceSlot = slots.get(pSlotId);
+            if(sourceSlot.hasItem()){
+                int count = sourceSlot.getItem().getCount();
+                if(pButton == 1){
+                    count = (int) Math.ceil((double) sourceSlot.getItem().getCount() / 2);
+                }
+                int finalCount = count;
+                ItemStack extracted = blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER)
+                        .map(handler -> ((CustomItemHandler) handler).playerExtractItem(0, finalCount, false))
+                        .orElse(ItemStack.EMPTY);
+
+                pPlayer.getInventory().add(extracted);
+            }
+        }
+        super.clicked(pSlotId, pButton, pClickType, pPlayer);
     }
 }
