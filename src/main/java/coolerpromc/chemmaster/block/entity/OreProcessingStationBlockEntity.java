@@ -1,5 +1,6 @@
 package coolerpromc.chemmaster.block.entity;
 
+import coolerpromc.chemmaster.handler.CustomItemHandler;
 import coolerpromc.chemmaster.recipe.OreProcessingStationRecipe;
 import coolerpromc.chemmaster.screen.OreProcessingStationMenu;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -32,7 +32,8 @@ import java.util.Optional;
 public class OreProcessingStationBlockEntity extends BlockEntity implements MenuProvider{
     private static final int INPUT_SLOT = 0;
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(10){
+    private final CustomItemHandler itemHandler = new CustomItemHandler(10){
+
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -42,8 +43,15 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
             return slot == INPUT_SLOT;
         }
-    };
 
+        @Override
+        public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+            if (slot == INPUT_SLOT) {
+                return ItemStack.EMPTY;
+            }
+            return super.extractItem(slot, amount, simulate);
+        }
+    };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
 
@@ -157,7 +165,7 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
             List<ItemStack> results = recipe.get().getOutputs();
 
             // Extract the input item from the input slot
-            this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+            this.itemHandler.internalExtractItem(INPUT_SLOT, 1, false);
 
             // Loop through each result item and find suitable output slots
             for (ItemStack result : results) {
