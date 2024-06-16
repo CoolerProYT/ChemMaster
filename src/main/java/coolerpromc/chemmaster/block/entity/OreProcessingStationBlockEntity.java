@@ -209,7 +209,7 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
 
     private int findSuitableOutputSlot(ItemStack result) {
         int index = -1;
-        for (int i = 1; i < this.itemHandler.getSlots(); i++) {
+        for (int i = this.itemHandler.getSlots() - 1; i > 0; i--) {
             ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
             if ((stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() < this.itemHandler.getSlotLimit(i))) &&
                     stackInSlot.getCount() + result.getCount() <= this.itemHandler.getSlotLimit(i)) {
