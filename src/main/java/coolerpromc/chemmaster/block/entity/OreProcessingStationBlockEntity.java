@@ -51,7 +51,6 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
     private int progress = 0;
     private int maxProgress = 78;
 
-
     public OreProcessingStationBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ORE_PROCESSING_STATION_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
@@ -174,15 +173,47 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
         }
     }
 
+    private boolean checkSlot(List<ItemStack> results){
+        int count = 0;
+        int emptyCount = 0;
+        for (ItemStack result : results){
+            count++;
+        }
+
+        for (int i = 1; i < this.itemHandler.getSlots(); i++) {
+            ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
+            if(!stackInSlot.isEmpty()){
+                for (ItemStack result : results){
+                    if(stackInSlot.getItem() == result.getItem()){
+                        if(stackInSlot.getCount() + result.getCount() <= 64){
+                            emptyCount++;
+                        }
+                    }
+                }
+            }
+            else {
+                emptyCount++;
+            }
+        }
+
+        return emptyCount >= count;
+    }
+
     private int findSuitableOutputSlot(ItemStack result) {
+        int index = -1;
         for (int i = 1; i < this.itemHandler.getSlots(); i++) {
             ItemStack stackInSlot = this.itemHandler.getStackInSlot(i);
             if ((stackInSlot.isEmpty() || (stackInSlot.getItem() == result.getItem() && stackInSlot.getCount() < this.itemHandler.getSlotLimit(i))) &&
                     stackInSlot.getCount() + result.getCount() <= this.itemHandler.getSlotLimit(i)) {
-                return i;
+                if(stackInSlot.isEmpty()){
+                    index = i;
+                }
+                else{
+                    return i;
+                }
             }
         }
-        return -1;
+        return index;
     }
 
     private boolean hasRecipe() {
@@ -200,7 +231,7 @@ public class OreProcessingStationBlockEntity extends BlockEntity implements Menu
             }
         }
 
-        return true;
+        return checkSlot(results);
     }
 
 
