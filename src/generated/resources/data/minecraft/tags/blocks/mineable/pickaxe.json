@@ -1,5 +1,7 @@
 {
   "values": [
-    "chemmaster:fluid_separator"
+    "chemmaster:fluid_separator",
+    "chemmaster:ore_processing_station",
+    "chemmaster:air_cooler"
   ]
 }

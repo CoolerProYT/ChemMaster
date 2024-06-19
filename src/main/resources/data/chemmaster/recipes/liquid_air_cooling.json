@@ -1,0 +1,14 @@
+{
+  "type": "chemmaster:air_cooling",
+  "ingredients": [
+    {
+      "item": "chemmaster:test_tube"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:liquid_air",
+      "count": 1
+    }
+  ]
+}

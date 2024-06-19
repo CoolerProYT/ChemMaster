@@ -1,0 +1,14 @@
+{
+  "type": "chemmaster:ore_processing",
+  "ingredients": [
+    {
+      "item": "minecraft:coal_ore"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:raw_carbon",
+      "count": 1
+    }
+  ]
+}

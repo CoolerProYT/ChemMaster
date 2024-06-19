@@ -1,0 +1,26 @@
+{
+  "type": "chemmaster:ore_processing",
+  "ingredients": [
+    {
+      "item": "chemmaster:borax_ore"
+    }
+  ],
+  "output": [
+    {
+      "item": "chemmaster:raw_sodium",
+      "count": 2
+    },
+    {
+      "item": "chemmaster:raw_boron",
+      "count": 4
+    },
+    {
+      "item": "chemmaster:liquid_oxygen",
+      "count": 7
+    },
+    {
+      "item": "chemmaster:water_tube",
+      "count": 10
+    }
+  ]
+}
