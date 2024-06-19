@@ -24,9 +24,11 @@
 
   "block.chemmaster.fluid_separator": "Fluid Separator",
   "block.chemmaster.ore_processing_station": "Ore Processing Station",
+  "block.chemmaster.air_cooler": "Air Cooler",
 
   "item.chemmaster.liquid_hydrogen": "Liquid Hydrogen",
   "item.chemmaster.liquid_oxygen": "Liquid Oxygen",
+  "item.chemmaster.liquid_nitrogen": "Liquid Nitrogen",
   "item.chemmaster.water_tube": "Water Tube",
 
   "block.chemmaster.spodumene_ore": "Spodumene Ore",
@@ -71,6 +73,9 @@
   "item.chemmaster.raw_lithium": "Raw Lithium",
   "item.chemmaster.raw_silicon": "Raw Silicon",
   "item.chemmaster.raw_beryllium": "Raw Beryllium",
+  "item.chemmaster.raw_sodium": "Raw Sodium",
+  "item.chemmaster.raw_boron": "Raw Boron",
+  "item.chemmaster.raw_carbon": "Raw Carbon",
 
   "creativetab.chemmaster": "Chem Master"
 }
