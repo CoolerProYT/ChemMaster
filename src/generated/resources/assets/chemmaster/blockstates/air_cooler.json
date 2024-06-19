@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=south": { "model": "chemmaster:block/air_cooler" },
+    "facing=east": { "model": "chemmaster:block/air_cooler", "y": 270 },
+    "facing=west": { "model": "chemmaster:block/air_cooler", "y": 90 },
+    "facing=north": { "model": "chemmaster:block/air_cooler", "y": 180 }
+  }
+}
