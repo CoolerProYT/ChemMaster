@@ -14,6 +14,8 @@ public class ModRecipes {
             SERIALIZERS.register("fluid_separating", () -> FluidSeparatingRecipe.Serializer.INSTANCE);
     public static final RegistryObject<RecipeSerializer<OreProcessingStationRecipe>> ORE_PROCESSING_SERIALIZER =
             SERIALIZERS.register("ore_processing", () -> OreProcessingStationRecipe.Serializer.INSTANCE);
+    public static final RegistryObject<RecipeSerializer<AirCoolerRecipe>> AIR_COOLING_SERIALIZER =
+            SERIALIZERS.register("air_cooling", () -> AirCoolerRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);

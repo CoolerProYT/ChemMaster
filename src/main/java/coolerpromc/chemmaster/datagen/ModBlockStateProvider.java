@@ -28,6 +28,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ModelFile.UncheckedModelFile(modLoc("block/fluid_separator")));
         simpleBlock(ModBlocks.ORE_PROCESSING_STATION.get(),
                 new ModelFile.UncheckedModelFile(modLoc("block/ore_processing_station")));
+        simpleBlock(ModBlocks.AIR_COOLER.get(),
+                new ModelFile.UncheckedModelFile(modLoc("block/air_cooler")));
 
         blockWithItem(ModBlocks.SPODUMENE_ORE);
         blockWithItem(ModBlocks.BERYL_ORE);

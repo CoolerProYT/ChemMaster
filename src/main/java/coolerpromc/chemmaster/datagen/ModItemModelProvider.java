@@ -5,6 +5,7 @@ import coolerpromc.chemmaster.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.FurnaceBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -36,12 +37,16 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.LIQUID_HYDROGEN);
         simpleItem(ModItems.LIQUID_OXYGEN);
+        simpleItem(ModItems.LIQUID_NITROGEN);
         simpleItem(ModItems.WATER_TUBE);
 
         simpleItem(ModItems.RAW_ALUMINUM);
         simpleItem(ModItems.RAW_LITHIUM);
         simpleItem(ModItems.RAW_SILICON);
         simpleItem(ModItems.RAW_BERYLLIUM);
+        simpleItem(ModItems.RAW_SODIUM);
+        simpleItem(ModItems.RAW_BORON);
+        simpleItem(ModItems.RAW_CARBON);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item){

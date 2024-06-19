@@ -36,6 +36,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.dropSelf(ModBlocks.FLUID_SEPARATOR.get());
         this.dropSelf(ModBlocks.ORE_PROCESSING_STATION.get());
+        this.dropSelf(ModBlocks.AIR_COOLER.get());
 
         //temp
         this.dropSelf(ModBlocks.SPODUMENE_ORE.get());

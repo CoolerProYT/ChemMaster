@@ -6,10 +6,7 @@ import coolerpromc.chemmaster.block.entity.ModBlockEntities;
 import coolerpromc.chemmaster.item.ModCreativeModTabs;
 import coolerpromc.chemmaster.item.ModItems;
 import coolerpromc.chemmaster.recipe.ModRecipes;
-import coolerpromc.chemmaster.screen.FluidSeparatorScreen;
-import coolerpromc.chemmaster.screen.ModMenuTypes;
-import coolerpromc.chemmaster.screen.OreProcessingStationMenu;
-import coolerpromc.chemmaster.screen.OreProcessingStationScreen;
+import coolerpromc.chemmaster.screen.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.registries.Registries;
@@ -24,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -94,6 +92,7 @@ public class ChemMaster {
         {
             MenuScreens.register(ModMenuTypes.FLUID_SEPARATOR_MENU.get(), FluidSeparatorScreen::new);
             MenuScreens.register(ModMenuTypes.ORE_PROCESSING_STATION_MENU.get(), OreProcessingStationScreen::new);
+            MenuScreens.register(ModMenuTypes.AIR_COOLER_MENU.get(), AirCoolerScreen::new);
         }
     }
 }

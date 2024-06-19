@@ -27,7 +27,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.LEAD_BLOCK.get())
                 .add(ModBlocks.RAW_LEAD_BLOCK.get())
                 .add(ModBlocks.LEAD_ORE.get())*/
-                .add(ModBlocks.FLUID_SEPARATOR.get());
+                .add(ModBlocks.FLUID_SEPARATOR.get())
+                .add(ModBlocks.ORE_PROCESSING_STATION.get())
+                .add(ModBlocks.AIR_COOLER.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 /*.add(ModBlocks.ALUMINUM_BLOCK.get())
@@ -36,7 +38,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(ModBlocks.LEAD_BLOCK.get())
                 .add(ModBlocks.RAW_LEAD_BLOCK.get())
                 .add(ModBlocks.LEAD_ORE.get())*/
-                .add(ModBlocks.FLUID_SEPARATOR.get());
+                .add(ModBlocks.FLUID_SEPARATOR.get())
+                .add(ModBlocks.ORE_PROCESSING_STATION.get())
+                .add(ModBlocks.AIR_COOLER.get());
 
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL);
 //                .add(ModBlocks.ALUMINUM_BLOCK.get());

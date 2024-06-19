@@ -30,12 +30,16 @@ public class ModItems {
 
     public static final RegistryObject<Item> LIQUID_HYDROGEN = ITEMS.register("liquid_hydrogen", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIQUID_OXYGEN = ITEMS.register("liquid_oxygen", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIQUID_NITROGEN = ITEMS.register("liquid_nitrogen", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WATER_TUBE = ITEMS.register("water_tube", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_ALUMINUM = ITEMS.register("raw_aluminum", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_LITHIUM = ITEMS.register("raw_lithium", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_SILICON = ITEMS.register("raw_silicon", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_BERYLLIUM = ITEMS.register("raw_beryllium", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_SODIUM = ITEMS.register("raw_sodium", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_BORON = ITEMS.register("raw_boron", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_CARBON = ITEMS.register("raw_carbon", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

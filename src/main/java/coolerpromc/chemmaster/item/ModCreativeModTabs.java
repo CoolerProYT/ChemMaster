@@ -19,6 +19,7 @@ public class ModCreativeModTabs {
                     .displayItems((pParameters,pOutput) -> {
                         pOutput.accept(ModBlocks.FLUID_SEPARATOR.get());
                         pOutput.accept(ModBlocks.ORE_PROCESSING_STATION.get());
+                        pOutput.accept(ModBlocks.AIR_COOLER.get());
                         //Ore
                         pOutput.accept(ModBlocks.APATITE_ORE.get());
                         pOutput.accept(ModBlocks.ARGENTITE_ORE.get());
@@ -65,7 +66,10 @@ public class ModCreativeModTabs {
                         /*pOutput.accept(ModItems.RAW_LEAD.get());*/
                         pOutput.accept(ModItems.RAW_ALUMINUM.get());
                         pOutput.accept(ModItems.RAW_BERYLLIUM.get());
+                        pOutput.accept(ModItems.RAW_BORON.get());
+                        pOutput.accept(ModItems.RAW_CARBON.get());
                         pOutput.accept(ModItems.RAW_LITHIUM.get());
+                        pOutput.accept(ModItems.RAW_SODIUM.get());
                         pOutput.accept(ModItems.RAW_SILICON.get());
 
                         //Dust

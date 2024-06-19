@@ -1,6 +1,7 @@
 package coolerpromc.chemmaster.block;
 
 import coolerpromc.chemmaster.ChemMaster;
+import coolerpromc.chemmaster.block.custom.AirCoolerBlock;
 import coolerpromc.chemmaster.block.custom.FluidSeparatorBlock;
 import coolerpromc.chemmaster.block.custom.OreProcessingStationBlock;
 import coolerpromc.chemmaster.item.ModItems;
@@ -37,6 +38,8 @@ public class ModBlocks {
             () -> new FluidSeparatorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> ORE_PROCESSING_STATION = registerBlock("ore_processing_station",
             () -> new OreProcessingStationBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
+    public static final RegistryObject<Block> AIR_COOLER = registerBlock("air_cooler",
+            () -> new AirCoolerBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
 
     // Ore Register by order
     public static final RegistryObject<Block> SPODUMENE_ORE = registerBlock("spodumene_ore",

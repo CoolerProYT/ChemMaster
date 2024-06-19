@@ -11,5 +11,8 @@ public class CustomItemHandler extends ItemStackHandler {
     public ItemStack internalExtractItem(int slot, int amount, boolean simulate) {
         return super.extractItem(slot, amount, simulate);
     }
+    public ItemStack playerExtractItem(int slot, int amount, boolean simulate) {
+        return internalExtractItem(slot, amount, simulate);
+    }
 }
 

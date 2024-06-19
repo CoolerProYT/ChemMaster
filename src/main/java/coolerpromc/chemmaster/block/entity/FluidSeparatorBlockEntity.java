@@ -52,7 +52,7 @@ public class FluidSeparatorBlockEntity extends BlockEntity implements MenuProvid
         }
     };
 
-    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.of(() -> itemHandler);
 
     protected final ContainerData data;
     private int progress = 0;

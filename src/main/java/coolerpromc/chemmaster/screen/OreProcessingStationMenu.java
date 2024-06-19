@@ -79,6 +79,10 @@ public class OreProcessingStationMenu extends AbstractContainerMenu {
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
+        if (pIndex == 36){
+            clicked(pIndex, 0, ClickType.PICKUP, playerIn);
+            return ItemStack.EMPTY;
+        }
         Slot sourceSlot = slots.get(pIndex);
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
