@@ -1,12 +1,15 @@
 package coolerpromc.chemmaster.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import coolerpromc.chemmaster.block.entity.ModBlockEntities;
 import coolerpromc.chemmaster.block.entity.OreProcessingStationBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -23,15 +26,20 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class OreProcessingStationBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 15, 16);
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final MapCodec<OreProcessingStationBlock> CODEC = simpleCodec(OreProcessingStationBlock::new);
 
     public OreProcessingStationBlock(Properties p_49792_) {
         super(p_49792_);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -57,17 +65,31 @@ public class OreProcessingStationBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof OreProcessingStationBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (OreProcessingStationBlockEntity)entity, pPos);
+                pPlayer.openMenu((OreProcessingStationBlockEntity)entity);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if(entity instanceof OreProcessingStationBlockEntity) {
+                pPlayer.openMenu((OreProcessingStationBlockEntity)entity);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+
+        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable

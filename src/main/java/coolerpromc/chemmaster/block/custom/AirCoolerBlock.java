@@ -1,5 +1,6 @@
 package coolerpromc.chemmaster.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import coolerpromc.chemmaster.block.entity.AirCoolerBlockEntity;
 import coolerpromc.chemmaster.block.entity.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -7,7 +8,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -23,14 +26,19 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 public class AirCoolerBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final MapCodec<AirCoolerBlock> CODEC = simpleCodec(AirCoolerBlock::new);
 
     public AirCoolerBlock(Properties p_49792_) {
         super(p_49792_);
+    }
+
+    @Override
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -57,17 +65,31 @@ public class AirCoolerBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof AirCoolerBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (AirCoolerBlockEntity)entity, pPos);
+                pPlayer.openMenu((AirCoolerBlockEntity)entity);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+            if(entity instanceof AirCoolerBlockEntity) {
+                pPlayer.openMenu((AirCoolerBlockEntity)entity);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+
+        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable

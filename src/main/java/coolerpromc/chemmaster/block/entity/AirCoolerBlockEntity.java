@@ -126,21 +126,6 @@ public class AirCoolerBlockEntity extends BlockEntity implements MenuProvider{
         return new AirCoolerMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.putInt("air_cooler.progress", progress);
-
-        super.saveAdditional(pTag);
-    }
-
-    @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        progress = pTag.getInt("air_cooler.progress");
-    }
-
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()) {
             increaseCraftingProgress();
@@ -249,7 +234,7 @@ public class AirCoolerBlockEntity extends BlockEntity implements MenuProvider{
             inventory.setItem(i, this.itemHandler.getStackInSlot(i));
         }
 
-        return this.level.getRecipeManager().getRecipeFor(AirCoolerRecipe.Type.INSTANCE, inventory, level);
+        return this.level.getRecipeManager().getRecipeFor(AirCoolerRecipe.Type.INSTANCE, AirCoolerRecipe, level);
     }
 
     private boolean canInsertAmountIntoOutputSlot(ItemStack result) {
